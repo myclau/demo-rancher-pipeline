@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: demo-rancher-pipeline
   namespace: demo-rancher-pipeline
+
 spec:
   rules:
   - host: xip.io
@@ -11,6 +12,7 @@ spec:
       - backend:
           serviceName: ingress-demo-rancher-pipeline
           servicePort: 80
+
 ---
 apiVersion: v1
 kind: Service
@@ -18,7 +20,7 @@ metadata:
   name: ingress-demo-rancher-pipeline
   namespace: demo-rancher-pipeline
 spec:
-  clusterIP: 10.43.140.226
+  clusterIP:
   ports:
   - port: 80
     protocol: TCP
@@ -28,19 +30,24 @@ spec:
   sessionAffinity: None
   type: ClusterIP
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
+  annotations:
+    field.cattle.io/ipAddresses: "null"
+    field.cattle.io/targetDnsRecordIds: "null"
+    field.cattle.io/targetWorkloadIds: '["deployment:demo-rancher-pipeline:demo-rancher-pipeline"]'
+  labels:
+    cattle.io/creator: norman
   name: demo-rancher-pipeline
   namespace: demo-rancher-pipeline
 spec:
+  clusterIP: None
   ports:
   - name: default
     port: 42
     protocol: TCP
     targetPort: 42
-  selector:
-    workloadID_demo-rancher-pipeline: "true"
   sessionAffinity: None
   type: ClusterIP
 ---
