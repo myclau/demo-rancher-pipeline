@@ -10,7 +10,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: demo-rancher-pipeline
+          serviceName: ingress-demo-rancher-pipeline
           servicePort: 80
 
 
