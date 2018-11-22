@@ -34,7 +34,7 @@ metadata:
   name: demo-rancher-pipeline
   namespace: demo-rancher-pipeline
 spec:
-  sports:
+  ports:
   - name: default
     port: 42
     protocol: TCP
