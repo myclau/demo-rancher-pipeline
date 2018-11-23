@@ -2,6 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: demo-rancher-pipeline-service
+  namespace: demo-rancher-pipeline
 spec:
   selector:
     app: demo-rancher-pipeline
@@ -17,6 +18,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo-rancher-pipeline
+  namespace: demo-rancher-pipeline
   labels:
     app: demo-rancher-pipeline
 spec:
