@@ -1,3 +1,4 @@
+# create ingress to let you have xip.io url for simple test
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -15,6 +16,7 @@ spec:
 
 
 ---
+# this service is for ingress to access the app (it point to workload)
 apiVersion: v1
 kind: Service
 metadata:
@@ -34,6 +36,7 @@ spec:
   sessionAffinity: None
   type: ClusterIP
 ---
+# this service is for other app in same namespace to access (it point to workload)
 apiVersion: v1
 kind: Service
 metadata:
@@ -55,6 +58,7 @@ spec:
   sessionAffinity: None
   type: ClusterIP
 ---
+# the main App
 apiVersion: apps/v1
 kind: Deployment
 metadata:
