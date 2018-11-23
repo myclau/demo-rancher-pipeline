@@ -10,5 +10,5 @@ stages:
 - name: Deploy
   steps:
   - applyYamlConfig:
-      path: ./deployment2.yaml
+      path: ./deployment.yaml
 timeout: 60
